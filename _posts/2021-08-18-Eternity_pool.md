@@ -13,6 +13,3 @@ Yesterday, this resulted in three new smartphone wallpapers. They are different 
 | 1 | 2 | 3 |
 |-|-|-|
 | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_1.png "eternity pool 1") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_2.png "eternity pool 2") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_3.png "eternity pool 3") |
-
-And this is a video of the training process:
-https://github.com/jorahn/blog/raw/master/images/eternity_pool/eternity_pool.mp4
