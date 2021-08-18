@@ -12,5 +12,5 @@ Yesterday, this resulted in three new smartphone wallpapers. They are based on t
 
 | 1 | 2 | 3 |
 |-|-|-|
-| ![]({{ site.baseurl }}/images/eternity_pool_1.png "eternity pool 1") | ![]({{ site.baseurl }}/images/eternity_pool_2.png "eternity pool 2") | ![]({{ site.baseurl }}/images/eternity_pool_3.png "eternity pool 3") |
+| ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_1.png "eternity pool 1") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_2.png "eternity pool 2") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_3.png "eternity pool 3") |
 
