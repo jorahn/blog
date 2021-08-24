@@ -13,6 +13,17 @@
   
     
         ,"post1": {
+            "title": "Tackling Imbalanced Regression with SMOGN",
+            "content": "Imbalanced data is ubiquitous in practice and both research and high quality open source software exist for dealing with Imbalanced Classification tasks. Generally speaking, the approaches are under-sampling observations from classes that are dominating the data or over-sampling observations from rare classes. This can be done in naive ways (sampling with replacement) or in more sophisticated ways, e.g. by creating synthetic observations based on real observations with added noise. . When working on a Regression problem with imbalanced target variable distribution, I’ve found three main approaches: . LogTransform of the Target Variable | Synthetic Minority Over-Sampling Technique for Regression - SMOGN | Deep Imbalanced Regression - DIR | LogTransform is in my standard toolbox and helped to boost performance as expected. But the imbalance/distribution skew was still far from resolved and thus predictions still centered in the range of most frequent observations. My Ridge, Gradient Boosting and FC-DNN models would completely ignore a significant range of (rare) target values in their predictions. Problem not solved! . Preprocessing the data with SMOGN took around 10 minuts and lead to a slightly worse MAPE performance, but a much better coverage of the entire target value range. SMOGN provides roughly three stages of customization for this re-sampling process. I’d characterize these as automated, automated within bounds and manual. So far I’ve tested the automated preprocessing and while I’m satisfied with the result, the new distribution has become multimodal and still not ideal for training. But I’m optimistic that adding bounds or going for full manual configuration of the re-sampling should lead to further improvements. Problem still not solved, but a step in the right direction. . On my dataset, the total number of observations was slightly reduced after SMOGN upsampled rare observations and downsampled the frequent ones. Having taken care of all other preprocessing (missing data, numeric representations etc.), the number of columns was not affected. Lastly, I’ve compared 2D principal component analysis of the original dataset and the same dataset after re-sampling with SMOGN and found the scatterplots to overlap very well. . So far, I’ve not tried to apply DIR, as it seems a bit less straightforward, consisting of both label smoothing and feature smoothing and the examples include integration into the PyTorch model and training loop. So this might not be applicable to the Ridge and Gradient Boosting models I keep running for comparison. .",
+            "url": "https://jonathan.rahn.42digital.com/blog/regression/imbalanced%20data/2021/08/24/Imbalanced_Regression.html",
+            "relUrl": "/regression/imbalanced%20data/2021/08/24/Imbalanced_Regression.html",
+            "date": " • Aug 24, 2021"
+        }
+        
+    
+  
+    
+        ,"post2": {
             "title": "Eternity Pool",
             "content": "Like so many others, I’ve recently spent some time playing with VQGAN+CLIP. . Yesterday, this resulted in three new smartphone wallpapers. They are different steps in the VQGAN training process based on the prompt “infinity pool gazing into eternity with bright sunshine”: . 1 2 3 . | | | .",
             "url": "https://jonathan.rahn.42digital.com/blog/clip/art/2021/08/19/Eternity_pool.html",
@@ -23,23 +34,12 @@
     
   
     
-        ,"post2": {
+        ,"post3": {
             "title": "Intro to My Blog",
             "content": "Why? . I’ve wanted to put all my content into one place for some time. Putting things in writing requires more rigorous thinking, so this is mainly meant for myself. . Eventually, you may find my thoughts or ideas on topics like: . Machine Learning &amp; Data Science | Python Programming | Data Warehouses | Digital Advertising | and other topics… | . Twitter . For now, let me leave you with a link to this wonderful piece by Ryan Moulton, that I recently discovered on Twitter: . Come, walk with me for a while through latent space.https://t.co/MbtvMyBB3t . &mdash; Ryan Moulton 💉💉🥳 (@moultano) July 21, 2021",
             "url": "https://jonathan.rahn.42digital.com/blog/about/2021/08/18/Intro.html",
             "relUrl": "/about/2021/08/18/Intro.html",
             "date": " • Aug 18, 2021"
-        }
-        
-    
-  
-    
-        ,"post3": {
-            "title": "Tackling Imbalanced Regression with SMOGN",
-            "content": "Imbalanced data is ubiquitous in practice and both research and high quality open source software exist for dealing with Imbalanced Classification tasks. Generally speaking, the approaches are under-sampling observations from classes that are dominating the data or over-sampling observations from rare classes. This can be done in naive ways (sampling with replacement) or in more sophisticated ways, e.g. by creating synthetic observations based on real observations with added noise. . When working on a Regression problem with imbalanced target variable distribution, I’ve found three main approaches: . LogTransform of the Target Variable | Synthetic Minority Over-Sampling Technique for Regression - SMOGN | Deep Imbalanced Regression - DIR | LogTransform is in my standard toolbox and helped to boost performance as expected. But the imbalance/distribution skew was still far from resolved and thus predictions still centered in the range of most frequent observations. My Ridge, Gradient Boosting and FC-DNN models would completely ignore a significant range of (rare) target values in their predictions. Problem not solved! . Preprocessing the data with SMOGN took around 10 minuts and lead to a slightly worse MAPE performance, but a much better coverage of the entire target value range. SMOGN provides roughly three stages of customization for this re-sampling process. I’d characterize these as automated, automated within bounds and manual. So far I’ve tested the automated preprocessing and while I’m satisfied with the result, the new distribution has become multimodal and still not ideal for training. But I’m optimistic that adding bounds or going for full manual configuration of the re-sampling should lead to further improvements. Problem still not solved, but a step in the right direction. . On my dataset, the total number of observations was slightly reduced after SMOGN upsampled rare observations and downsampled the frequent ones. Having taken care of all other preprocessing (missing data, numeric representations etc.), the number of columns was not affected. Lastly, I’ve compared 2D principal component analysis of the original dataset and the same dataset after re-sampling with SMOGN and found the scatterplots to overlap very well. . So far, I’ve not tried to apply DIR, as it seems a bit less straightforward, consisting of both label smoothing and feature smoothing and the examples include integration into the PyTorch model and training loop. So this might not be applicable to the Ridge and Gradient Boosting models I keep running for comparison. .",
-            "url": "https://jonathan.rahn.42digital.com/blog/regression/imbalanced%20data/2018/08/24/Imbalanced_Regression.html",
-            "relUrl": "/regression/imbalanced%20data/2018/08/24/Imbalanced_Regression.html",
-            "date": " • Aug 24, 2018"
         }
         
     
