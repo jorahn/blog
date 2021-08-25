@@ -39,6 +39,11 @@ adding bounds or going for fully manual configuration of the re-sampling should 
 further improvements. Problem still not solved, but a step in the right direction.
 
 
+| 1 | 2 |
+|-|-|
+| ![]({{ site.baseurl }}/images/imbalanced_regression/skewed_target.png "Skewed Target Variable") | ![]({{ site.baseurl }}/images/imbalanced_regression/target_auto_smogn.png "Target Variable after auto SMOGN") |
+
+
 On my dataset, the total number of observations was reduced by ~20% after SMOGN upsampled rare observations
 with noise and downsampled the frequent ones. Having taken care of all other preprocessing (missing data, numeric 
 representations etc.), the number of columns was not affected. Missing values would have resulted in dropped 
