@@ -10,10 +10,10 @@ permalink: /about/
 ## See: [Intro to My Blog]({{ site.baseurl }}/about/2021/08/18/Intro.html)
 
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+This website is powered by **[fastpages](https://github.com/fastai/fastpages)**.
 
 
-Impressum:
+#### Impressum:
 
 
 Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
