@@ -1,1 +1,1 @@
-Sitemap: https://jonathan.rahn.42digital.com/blog/sitemap.xml
+Sitemap: /blog/sitemap.xml

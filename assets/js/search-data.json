@@ -4,7 +4,7 @@
         "post0": {
             "title": "Tackling Imbalanced Regression with SMOGN",
             "content": "Imbalanced data is ubiquitous in practice and both research and high quality open source software exist for dealing with Imbalanced Classification tasks. Generally speaking, the main approaches are under-sampling observations from classes that are observed frequently or over-sampling observations from rare classes to achieve a balanced distribution of labels. This can be done in naive ways (sampling with replacement) or in more sophisticated ways, e.g. by creating synthetic observations based on real observations with interpolations or added noise. . When working on a Regression problem with highly skewed target variable distribution, I’ve found it much more difficult to come up with useful approaches vs. Classification. After some research, I have settled on three options to test individually and in combination: . LogTransform of the Target Variable | Synthetic Minority Over-Sampling Technique for Regression - SMOGN | Deep Imbalanced Regression - DIR | LogTransform is in my standard toolbox and helped to boost performance as expected. But the imbalance/distribution was still skewed and far from normally distributed and thus predictions still centered in the range of most frequent observations. My Ridge, Gradient Boosting and FC-DNN models would completely ignore a significant range of (rare) target values in their predictions. Problem not solved! . Preprocessing the data with SMOGN took around 10 minuts and (applied in combination with LogTransform) lead to a slightly worse MAPE performance, but a much better coverage of the entire target value range. SMOGN provides roughly three stages of customization for the re-sampling process. I’d characterize these as automated, automated within bounds and manual. So far I’ve tested the automated preprocessing and while I’m satisfied with the result, the new distribution is multimodal and still not ideal for training. But I’m optimistic that adding bounds or going for fully manual configuration of the re-sampling should lead to further improvements. Problem still not solved, but a step in the right direction. . Before After . | | . On my dataset, the total number of observations was reduced by ~20% after SMOGN upsampled rare observations with noise and downsampled the frequent ones. Having taken care of all other preprocessing (missing data, numeric representations etc.), the number of columns was not affected. Missing values would have resulted in dropped columns. Lastly, I’ve compared a 2D PCA-plot of the original preprocessed dataset and the same dataset after additional re-sampling with SMOGN and found the scatterplots to overlap very well. . . So far, I’ve not tried to apply DIR, as it seems a bit less straightforward, consisting of label smoothing and feature smoothing as separate steps. Also the examples include integration into the PyTorch model and training loop. So this might not be applicable to the Ridge and Gradient Boosting models I keep running for comparison, but a learning resampling instead of static one-off preprocessing, could yield even better results. .",
-            "url": "https://jonathan.rahn.42digital.com/blog/regression/imbalanced%20data/2021/08/24/Imbalanced_Regression.html",
+            "url": "/blog/regression/imbalanced%20data/2021/08/24/Imbalanced_Regression.html",
             "relUrl": "/regression/imbalanced%20data/2021/08/24/Imbalanced_Regression.html",
             "date": " • Aug 24, 2021"
         }
@@ -15,7 +15,7 @@
         ,"post1": {
             "title": "Giving Zero Shot Predictions with CLIP a Try",
             "content": "The CLIP paper and repo show a straightforward way to use the model for zero shot image classification. CLIP consists of two model components: a vision model and a language model. While the language model is a basic Transformer, the vision model can be either a modified ResNet or a VisionTransformer. The models have been pretrained on 400m image-text-pairs in a contrastive setting. . CLIP mainly provides APIs to encode images or text into this learned latent space. After encoding a list of images, this can be utilized to find the image closest to an encoded text prompt. Alternatively a list of text options can be encoded an utilized to find the best match to an encoded image. . The latter option is presented as Zero Shot Prediction, effectively creating a custom classifier from text options and then retrieving the classification results for an encoded image. It’s called Zero Shot, because the CLIP model was never trained on these labels. . As detailed by OpenAI in the CLIP paper and in more detail for example by the BigScience working group on Prompt Engineering (also here), the framing of the classification label text can play a big role in prediction performance. E.g. instead of labels cat vs. dog a better performance can usually be achieved if the labels a photo of a cat and a photo of a dog are chosen. . I’ve conducted some initial tests and found, that CLIP (ViT-B/16) can zero shot recognize patterns in fashion (e.g. dots, stripes, flowers, checkered, print, …) with ~80% accuracy without significant prompt engineering or fine tuning on additional data. . The work on multi-language fine tuning of CLIP shows additional ways of more traditional optimization approaches building upon the extensively pretrained CLIP model. Last but not least, in combination with Facebooks faiss, I’ve found CLIP to be quite useful as part of a high performance recommendation and/or search engine. . More to come, no doubt! .",
-            "url": "https://jonathan.rahn.42digital.com/blog/clip/prompt%20engineering/2021/08/23/Zero_Shot.html",
+            "url": "/blog/clip/prompt%20engineering/2021/08/23/Zero_Shot.html",
             "relUrl": "/clip/prompt%20engineering/2021/08/23/Zero_Shot.html",
             "date": " • Aug 23, 2021"
         }
@@ -26,7 +26,7 @@
         ,"post2": {
             "title": "Eternity Pool",
             "content": "Like so many others, I’ve recently spent some time playing with VQGAN+CLIP. . Yesterday, this resulted in three new smartphone wallpapers. They are different steps in the VQGAN training process based on the prompt “infinity pool gazing into eternity with bright sunshine”: . 1 2 3 . | | | .",
-            "url": "https://jonathan.rahn.42digital.com/blog/clip/art/2021/08/19/Eternity_pool.html",
+            "url": "/blog/clip/art/2021/08/19/Eternity_pool.html",
             "relUrl": "/clip/art/2021/08/19/Eternity_pool.html",
             "date": " • Aug 19, 2021"
         }
@@ -37,7 +37,7 @@
         ,"post3": {
             "title": "Intro to My Blog",
             "content": "Why? . I’ve wanted to put all my content into one place for some time. Putting things in writing requires more rigorous thinking, so this is mainly meant for myself. . Eventually, you may find my thoughts or ideas on topics like: . Machine Learning &amp; Data Science | Python Programming | Data Warehouses | Digital Advertising | and other topics… | . Twitter . For now, let me leave you with a link to this wonderful piece by Ryan Moulton, that I recently discovered on Twitter: . Come, walk with me for a while through latent space.https://t.co/MbtvMyBB3t . &mdash; Ryan Moulton 💉💉🥳 (@moultano) July 21, 2021",
-            "url": "https://jonathan.rahn.42digital.com/blog/about/2021/08/18/Intro.html",
+            "url": "/blog/about/2021/08/18/Intro.html",
             "relUrl": "/about/2021/08/18/Intro.html",
             "date": " • Aug 18, 2021"
         }
@@ -52,7 +52,7 @@
       ,"page1": {
           "title": "About Me",
           "content": ". See: Intro to My Blog . This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
-          "url": "https://jonathan.rahn.42digital.com/blog/about/",
+          "url": "/blog/about/",
           "relUrl": "/about/",
           "date": ""
       }
@@ -84,7 +84,7 @@
       ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
-          "url": "https://jonathan.rahn.42digital.com/blog/robots.txt",
+          "url": "/blog/robots.txt",
           "relUrl": "/robots.txt",
           "date": ""
       }
