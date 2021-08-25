@@ -39,7 +39,7 @@ adding bounds or going for fully manual configuration of the re-sampling should 
 further improvements. Problem still not solved, but a step in the right direction.
 
 
-| 1 | 2 |
+| Before | After |
 |-|-|
 | ![]({{ site.baseurl }}/images/imbalanced_regression/skewed_target.png "Skewed Target Variable") | ![]({{ site.baseurl }}/images/imbalanced_regression/target_auto_smogn.png "Target Variable after auto SMOGN") |
 
