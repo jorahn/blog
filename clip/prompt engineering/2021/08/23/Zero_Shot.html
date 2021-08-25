@@ -112,9 +112,12 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>The <a href="https://arxiv.org/abs/2103.00020">CLIP paper</a> and repo show a straightforward way to use the model for zero shot image classification. 
+    <p>The <a href="https://arxiv.org/abs/2103.00020">CLIP paper</a> and <a href="https://github.com/openai/CLIP#api">repo</a> show a 
+straightforward way to use the model for zero shot image classification. 
 CLIP consists of two model components: a vision model and a language model. While the language model
-is a basic Transformer, the vision model can be either a modified ResNet or a VisionTransformer. 
+is a <a href="https://github.com/openai/CLIP/blob/fa56f2525191a013533338f137aab59ac36d8c26/clip/model.py#L191">basic Transformer</a>, 
+the vision model can be either a <a href="https://github.com/openai/CLIP/blob/fa56f2525191a013533338f137aab59ac36d8c26/clip/model.py#L93">modified ResNet</a>
+or a <a href="https://github.com/openai/CLIP/blob/fa56f2525191a013533338f137aab59ac36d8c26/clip/model.py#L202">VisionTransformer</a>. 
 The models have been pretrained on 400m image-text-pairs in a contrastive setting.</p>
 
 <p>CLIP mainly provides APIs to encode images or text into this learned latent space.
