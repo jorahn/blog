@@ -51,6 +51,9 @@ columns. Lastly, I've compared a 2D PCA-plot of the original preprocessed datase
 after additional re-sampling with SMOGN and found the scatterplots to overlap very well.
 
 
+![]({{ site.baseurl }}/images/imbalanced_regression/pca_compare.png "PCA scatter plots")
+
+
 So far, I've not tried to apply DIR, as it seems a bit less straightforward, consisting of label smoothing
 and feature smoothing as separate steps. Also the examples include integration into the PyTorch model and training loop. 
 So this might not be applicable to the Ridge and Gradient Boosting models I keep running for comparison,
