@@ -144,6 +144,21 @@ the new distribution is multimodal and still not ideal for training. But I’m o
 adding bounds or going for fully manual configuration of the re-sampling should lead to
 further improvements. Problem still not solved, but a step in the right direction.</p>
 
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="/blog/images/imbalanced_regression/skewed_target.png" alt="" title="Skewed Target Variable" /></td>
+      <td><img src="/blog/images/imbalanced_regression/target_auto_smogn.png" alt="" title="Target Variable after auto SMOGN" /></td>
+    </tr>
+  </tbody>
+</table>
+
 <p>On my dataset, the total number of observations was reduced by ~20% after SMOGN upsampled rare observations
 with noise and downsampled the frequent ones. Having taken care of all other preprocessing (missing data, numeric 
 representations etc.), the number of columns was not affected. Missing values would have resulted in dropped 
