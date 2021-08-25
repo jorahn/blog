@@ -8,11 +8,15 @@ permalink: /about/
 
 
 ## See: [Intro to My Blog]({{ site.baseurl }}/about/2021/08/18/Intro.html)
-  
-  
-   
-   
+
+
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
 
 
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+Impressum:
+
+Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+
+RCS Analytics GmbH
+Bruno-Lauenroth-Weg 31
+22417 Hamburg
