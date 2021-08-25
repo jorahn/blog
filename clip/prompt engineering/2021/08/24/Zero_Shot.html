@@ -126,16 +126,17 @@ options and then retrieving the classification results for an encoded image. It�
 the CLIP model was never trained on these labels.</p>
 
 <p>As detailed by OpenAI in the CLIP paper and in more detail for example by the 
-<a href="https://twitter.com/BigscienceW/status/1429787756063043588?s=20">BigScience working group on Prompt Engineering</a>, 
-the framing of the classification label text playes a big role. E.g. instead of labels <code class="language-plaintext highlighter-rouge">cat</code> and <code class="language-plaintext highlighter-rouge">dog</code> a 
-better performance can usually be achieved if the labels <code class="language-plaintext highlighter-rouge">a photo of a cat</code> and <code class="language-plaintext highlighter-rouge">a photo of a dog</code> are chosen.</p>
+<a href="https://docs.google.com/presentation/d/1jj2MdxaJhmwckoN_d3_fQhyU0Qk5xaPALx2k4UYjA3Y/edit#slide=id.p">BigScience working group on Prompt Engineering</a>, (<a href="http://34.133.69.215:8501/">also here</a>), 
+the framing of the classification label text can play a big role in prediction performance. E.g. instead of 
+labels <code class="language-plaintext highlighter-rouge">cat</code> vs. <code class="language-plaintext highlighter-rouge">dog</code> a better performance can usually be achieved if the labels <code class="language-plaintext highlighter-rouge">a photo of a cat</code> and 
+<code class="language-plaintext highlighter-rouge">a photo of a dog</code> are chosen.</p>
 
 <p>I’ve conducted some initial tests and found, that CLIP (ViT-B/16) can zero shot recognize patterns in fashion (e.g.
 dots, stripes, flowers, checkered, print, …) with ~80% accuracy without significant prompt engineering
-or model fine tuning on additional data.</p>
+or fine tuning on additional data.</p>
 
 <p>The work on <a href="https://github.com/FreddeFrallan/Multilingual-CLIP">multi-language</a> fine tuning of CLIP shows
-interesting ways of more traditional optimization approaches building upon the extensively pretrained model.
+additional ways of more traditional optimization approaches building upon the extensively pretrained CLIP model.
 Last but not least, in combination with <a href="https://github.com/facebookresearch/faiss">Facebooks faiss</a>, I’ve
 found CLIP to be quite useful as part of a high performance recommendation and/or search engine.</p>
 
