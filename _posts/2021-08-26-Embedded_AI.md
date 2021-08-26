@@ -12,7 +12,7 @@ And pretrained CLIP is certainly not a model made for embedded devices, like Mob
 
 Lets dig out the old RaspberryPi 3 from some half forgotten box and order a camera module on Amazon for < 10€.
 
-![]({{ site.baseurl }}/images/embedded_ai/raspberry_pi_3_camera.png "RaspberryPi 3 with Camera Module")
+![]({{ site.baseurl }}/images/embedded_ai/raspberry_pi_3_camera.jpeg "RaspberryPi 3 with Camera Module")
 
 
 The capture is actually quite impressive for a cheap, embedded solution.
@@ -27,9 +27,9 @@ Let's try to get some CLIP demo code running on the Pi:
 ![]({{ site.baseurl }}/images/embedded_ai/clip_rpi.png "CLIP (RN101) running on RaspberryPi")
 
 
-And now zero shot predict the camera output:
+And now zero shot predict the (resized) camera output:
 
-![]({{ site.baseurl }}/images/embedded_ai/clip_pi_predict_capture.png "CLIP (RN50) running on RaspberryPi")
+![]({{ site.baseurl }}/images/embedded_ai/clip_rpi_predict_capture.png "CLIP (RN50) running on RaspberryPi")
 
 
 
