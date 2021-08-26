@@ -32,5 +32,8 @@ And now zero shot predict the (resized) camera output:
 ![]({{ site.baseurl }}/images/embedded_ai/clip_rpi_predict_capture.png "CLIP (RN50) running on RaspberryPi")
 
 
-
+### Next up: image classification on real time stream from the camera. Let's see some latency measurements for clip.
+  
+  
+  
 {% twitter https://twitter.com/rahnjonathan/status/1430885879560642573?s=20 %}
