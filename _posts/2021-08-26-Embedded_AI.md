@@ -22,6 +22,8 @@ Lighting might need some improvements, but resolution and focus should provide g
 
 
 `Fast forward pytorch & clip setup steps...`  
+
+
 Let's try to get some CLIP demo code running on the Pi:
 
 ![]({{ site.baseurl }}/images/embedded_ai/clip_rpi.png "CLIP (RN101) running on RaspberryPi")
