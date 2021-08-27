@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-![]({{ site.baseurl }}/images/logo.png "VQGAN+CLIP")
+![]({{ site.baseurl }}/images/logo.png "Me by VQGAN+CLIP")
 
 
 ## See: [Intro to My Blog]({{ site.baseurl }}/about/2021/08/18/Intro.html)
