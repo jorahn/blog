@@ -13,10 +13,3 @@ Yesterday, this resulted in three new smartphone wallpapers. They are different 
 | 1 | 2 | 3 |
 |-|-|-|
 | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_1.png "eternity pool 1") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_2.png "eternity pool 2") | ![]({{ site.baseurl }}/images/eternity_pool/eternity_pool_3.png "eternity pool 3") |
-
-
-
-
-https://user-images.githubusercontent.com/13120204/131092310-0ed79b76-564a-4a08-8263-cef2a8728830.mp4
-
-
