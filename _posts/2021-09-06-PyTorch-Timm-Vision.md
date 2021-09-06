@@ -5,7 +5,7 @@ description: Comparison of PyTorch CV Models on DeepFashion Dataset
 categories: [Vision,Fine Tuning]
 title: Fine-Tuning PyTorch Vision Models 
 ---
-After the surprising Image Classification results with [zero-shot CLIP]({{ site.baseurl }}/clip/prompt%20engineering/2021/08/23/Zero_Shot.html)
+After the surprising Image Classification results with [zero-shot CLIP]({{ site.baseurl }}/clip/prompt%20engineering/2021/08/23/Zero_Shot.html),
 I've run a test over a number of deep computer vision architectures from [torchvision](https://github.com/pytorch/vision/tree/main/torchvision/models), 
 [fastai](https://github.com/fastai/fastai/blob/master/nbs/11_vision.models.xresnet.ipynb) and the awesome [timm library](https://github.com/rwightman/pytorch-image-models) by Ross Wightman.
 
