@@ -46,5 +46,8 @@ I guess, it's partly due to the training setup (dataset, hardware, batch size, e
 that some models didn't perform better. But for my use case, this was quite informative.
 
 
+![]({{ site.baseurl }}/images/training_efficiency.png "Normalized Training Efficiency")
+
+
 I'm investigating, why the timm-ViT model failed to run my benchmark and also, how to run the same
 test with one of the pretrained CLIP vision models (ViT or ResNet).
