@@ -60,7 +60,7 @@ test with one of the pretrained CLIP vision models (ViT or ResNet).
 I've wanted to try [Weights and Biases](https://wandb.ai/) for some time now, and this project has provided me 
 with a great opportunity. After comparing architectures, I've run a couple of (parallel) experiments locally and in Colab
 to compare ResNet34 with different Learning Rate Schedules on the same dataset. Please see 
-[here](https://wandb.ai/jrahn/finetune_resnet34_deepfashion) for more details.
+[here](https://wandb.ai/jrahn/finetune_resnet34_deepfashion/reports/DeepFashion-ResNet34-Fine-Tuning--VmlldzoxMDA0NTI1) for more details.
 
 
 ![image]({{ site.baseurl }}/images/finetuning_deepfashion/rn34_deepfashion_learning-rates.png "Learning Rate Schedules with W&B (showing 5 out of 8 runs)")
