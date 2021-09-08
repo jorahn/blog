@@ -16,6 +16,9 @@ in smaller models). All models are pretrained on ImageNet, are built with a new 
 fine-tuned on DeepFashion for one epoch with frozen weights (new head only) and three epochs with unfrozen weights.
 
 
+![image]({{ site.baseurl }}/images/deepfashion.png "DeepFashion Dataset")
+
+
 Training took on average ~20 minutes per epoch for all models on my hardware, so around 1:15h per model 
 (the first epoch with frozen weights is generally a bit faster, than the others). The full run took around 18 hours in total.
 Eventually, I might do a few more runs, just to get a feel for the actual distribution of results. Here are the results:
