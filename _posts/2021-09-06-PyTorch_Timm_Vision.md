@@ -16,7 +16,7 @@ in smaller models). All models are pretrained on ImageNet, are built with a new 
 fine-tuned on DeepFashion for one epoch with frozen weights (new head only) and three epochs with unfrozen weights.
 
 
-![image]({{ site.baseurl }}/images/deepfashion.png "DeepFashion Dataset")
+![image]({{ site.baseurl }}/images/finetuning_deepfashion/deepfashion.png "DeepFashion Dataset")
 
 
 Training took on average ~20 minutes per epoch for all models on my hardware, so around 1:15h per model 
@@ -49,8 +49,18 @@ I guess, it's partly due to the training setup (dataset, hardware, batch size, e
 that some models didn't perform better. But for my use case, this was quite informative.
 
 
-![image]({{ site.baseurl }}/images/training_efficiency.png "Normalized Training Efficiency")
+![image]({{ site.baseurl }}/images/finetuning_deepfashion/training_efficiency.png "Normalized Training Efficiency")
 
 
 I'm investigating, why the timm-ViT model failed to run my benchmark and also, how to run the same
 test with one of the pretrained CLIP vision models (ViT or ResNet).
+
+
+*Update:*  
+I've wanted to try [Weights and Biases](https://wandb.ai/) for some time now, and this project has provided me 
+with a great opportunity. After comparing architectures, I've run a couple of (parallel) experiments locally and in Colab
+to compare ResNet34 with different Learning Rate Schedules on the same dataset. Please see 
+[here](https://wandb.ai/jrahn/finetune_resnet34_deepfashion) for more details.
+
+
+![image]({{ site.baseurl }}/images/finetuning_deepfashion/rn34_deepfashion_learning-rates.png "Learning Rate Schedules with W&B (showing 5 out of 8 runs)")
