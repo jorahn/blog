@@ -63,4 +63,4 @@ to compare ResNet34 with different Learning Rate Schedules on the same dataset. 
 [here](https://wandb.ai/jrahn/finetune_resnet34_deepfashion/reports/DeepFashion-ResNet34-Fine-Tuning--VmlldzoxMDA0NTI1) for more details.
 
 
-![image]({{ site.baseurl }}/images/finetuning_deepfashion/rn34_deepfashion_learning-rates.png "Learning Rate Schedules with W&B (showing 5 out of 8 runs)")
+![image]({{ site.baseurl }}/images/finetuning_deepfashion/rn34_deepfashion_learning-rates.png "Learning Rate Schedules with W&B (showing 7 out of 10 runs)")
