@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Own your intelligence, on two old servers and €500 of upgrades | Blog by Jonathan Rahn</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Own your intelligence, on two old servers and €500 of upgrades" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A 180B model at 33 tok/s on two ten-year-old Dell servers, with no GPU. Coding agents ran nearly 300 experiments in nine days to build the engine." />
+<meta property="og:description" content="A 180B model at 33 tok/s on two ten-year-old Dell servers, with no GPU. Coding agents ran nearly 300 experiments in nine days to build the engine." />
+<link rel="canonical" href="https://jorahn.github.io/blog/own-your-intelligence/" />
+<meta property="og:url" content="https://jorahn.github.io/blog/own-your-intelligence/" />
+<meta property="og:site_name" content="Blog by Jonathan Rahn" />
+<meta property="og:image" content="https://jorahn.github.io/blog/images/own-your-intelligence/in-the-box.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-10-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://jorahn.github.io/blog/own-your-intelligence/","@type":"BlogPosting","headline":"Own your intelligence, on two old servers and €500 of upgrades","dateModified":"2026-10-01T00:00:00-05:00","datePublished":"2026-10-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://jorahn.github.io/blog/own-your-intelligence/"},"image":"https://jorahn.github.io/blog/images/own-your-intelligence/in-the-box.jpg","description":"A 180B model at 33 tok/s on two ten-year-old Dell servers, with no GPU. Coding agents ran nearly 300 experiments in nine days to build the engine.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://jorahn.github.io/blog/feed.xml" title="Blog by Jonathan Rahn" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script id="usercentrics-cmp" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" data-settings-id="b0F7qzQbv" async></script>
+
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 2000
+    });
+    gtag("set", "ads_data_redaction", true);
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHGTT9K');</script>
+<!-- End Google Tag Manager -->
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="/blog/assets/css/essay.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Blog by Jonathan Rahn</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="essay">
+  <p class="kicker">fi-inference · September 2026</p>
+  <h1>Own your intelligence, on two old servers and €500 of upgrades</h1>
+  <p class="dek">I had a week off between jobs, two old Dell servers and a pair of AI subscriptions. The result is a 180B model at 33 tok/s, with no GPU.</p>
+
+  <figure class="photo hero"><img src="/blog/images/own-your-intelligence/in-the-box.jpg" width="1000" height="750" alt="Two Dell R530 servers stacked inside a wooden box" loading="lazy"><figcaption>The two R530s in their box. Ten years old, with 288&nbsp;GB of RAM between them.</figcaption></figure>
+
+  <section class="tldr" aria-label="Summary">
+    <p class="label">TL;DR</p>
+    <ul>
+      <li>Two 2016-era Dell R530s now run Qwen3.8-Flash-Next (180B total, 6B active, 4-bit) at <strong>33 tok/s</strong> on one stream and 36 tok/s across four.</li>
+      <li>I already owned the servers. The upgrades cost <strong>under €500</strong> in used parts.</li>
+      <li>Coding agents ran <strong>nearly 300 experiments in nine days</strong> to get there, most of them on a smaller sibling model first. On the target, the first version of my own engine managed 1.45 tok/s; stock llama.cpp, the number to beat, managed 5.3.</li>
+      <li>The whole stack, from the weights to my MCP tools, now runs in my basement.</li>
+    </ul>
+  </section>
+
+  <p>I had about a week off between jobs. The DGX Spark I'd been using belonged to my previous employer, so it went back, and that left me with a problem: I had gotten hooked on having capable agents that run locally, private, always on and silent, and I no longer had the hardware for it.</p>
+
+  <p>What I did have was two Dell PowerEdge R530s from around 2016, switched off in my basement office. They weren't broken. They were loud.</p>
+
+  <figure class="photo "><img src="/blog/images/own-your-intelligence/r530s-before.jpg" width="1000" height="632" alt="Two Dell R530 servers stacked on a desk, front view" loading="lazy"><figcaption>Before: two R530s, switched off because they were too loud to live with.</figcaption></figure>
+
+  <p>Then I did some arithmetic. The Spark reads memory at 273&nbsp;GB/s, and for generating text that number more or less <em>is</em> the speed. Each R530 has two CPU sockets, and each socket has four memory channels of its own. With the right CPUs those channels run DDR4-2400: 76.8&nbsp;GB/s per socket on paper, about 307&nbsp;GB/s across all four sockets. That's the Spark's bandwidth and then some, just in four places instead of one. And the two boxes together have 288&nbsp;GB of RAM, against the Spark's 128. Getting one token through four separate memory systems became the whole project.</p>
+
+  <p>At that point I was sure: an inference engine written for exactly this hardware and exactly one model could be very fast. The week turned into nine days, and it went better than I expected. I would have been happy with 20 tok/s.</p>
+
+  <details class="aside">
+    <summary><span class="label">What I built</span><span class="hint">Hardware, model, engine, serving, fans. Skip it if you like; the story doesn't need it.</span></summary>
+    <div class="body">
+    <dl>
+      <dt>Hardware</dt><dd>Two Dell R530s with four Xeon E5-2695&nbsp;v4s (72 cores) and 288&nbsp;GB of DDR4-2400. A Mellanox ConnectX-3 InfiniBand card sits in each box, joined by one direct cable at 56&nbsp;Gb/s. Ubuntu Server boots from an SSD in each box, and NVMe drives on PCIe adapter cards hold the weights and the prompt cache. Out went the old CPUs, the spinning disks and the SAS controller.</dd>
+      <dt>Model</dt><dd>Qwen3.8-Flash-Next at 4-bit (Q4_K_M): about 180B parameters in total, about 6B read per token, plus its multi-token-prediction head.</dd>
+      <dt>Engine</dt><dd>A custom C++ engine, written by coding agents. Experts are pinned to four memory domains (2&nbsp;sockets × 2&nbsp;boxes), activations are exchanged over RDMA, and the MTP head drives speculative decoding.</dd>
+      <dt>Serving</dt><dd>An OpenAI-compatible server for my agents: streaming chat completions with tool calls and separate reasoning output, the model's own chat template, reasoning effort from off to xhigh, and the usual sampling knobs (temperature, top-p, top-k, min-p). Up to four sessions at once, with extra slots waking only when they're needed, so a lone request runs as fast as on a single-stream server. 262k context, and a prompt cache on NVMe so a returning conversation skips its prefill.</dd>
+      <dt>Quiet</dt><dd>My own fan controller replaces Dell's. It follows the CPU temperatures, ramps gently instead of jumping, and was tuned in a simulator fitted to thermal and microphone measurements: from peaks over 60&nbsp;dB(A) at my desk to 42 in normal use. In the finished acoustic box: 39 in normal use, 31–32 at idle.</dd>
+      <dt>Display</dt><dd>An iPad on the wall shows both servers live: temperatures, fans, decode and prefill speed, memory bandwidth per socket.</dd>
+      <dt>Agents</dt><dd>Opus 5.5 and Fable 5.1 (Claude Max 5x); Luna 6, Sol 6 and a little Astra (ChatGPT Plus).</dd>
+    </dl>
+    </div>
+  </details>
+
+  <p>I came out of it believing three things:</p>
+  <ol class="beliefs">
+    <li><span>Owning your intelligence is <em>the</em> thing.</span></li>
+    <li><span>CPU inference on used hardware is <em>a</em> thing.</span></li>
+    <li><span>Autoresearch works far beyond training scripts.</span></li>
+  </ol>
+
+  <h2><span class="num">1</span>Own your intelligence</h2>
+
+  <p>This is why I do any of it. Sequoia's <a href="https://sequoiacap.com/article/own-your-intelligence-a-how-to-guide">Own Your Intelligence</a> makes the case for companies. For one person it's the same case with smaller numbers.</p>
+
+  <p>For one person, the sensitive data is a knowledge base that grows by more than 1,000 entries a month, my playbooks, my task manager, my own chat and agent front end, and an inventory of the homelab, all exposed as MCP servers. My coding agent, <a href="https://github.com/earendil-works/pi">pi</a>, works with them all day. Every prompt to a hosted model carries a slice of that out of the house. Now it doesn't have to: the model runs on weights I hold, on hardware I own. Nobody can swap it, meter it, rate-limit it, or read along.</p>
+
+  <p>Hosted frontier agents built the replacement, and they're still better at that kind of work. But the model they built it for doesn't need to be the best, only good enough to act on my behalf, and it is: <a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next">Qwen3.8-Flash-Next</a> scores <a href="https://artificialanalysis.ai/models/qwen3-8-flash-next">40</a> on the Artificial Analysis Intelligence Index, above <a href="https://artificialanalysis.ai/models/gpt-5-6-luna">GPT-5.6 Luna</a> at maximum effort (37), OpenAI's cheap tier I would otherwise reach for.</p>
+
+  <figure class="chart" id="pareto">
+    <div class="chart-legend" aria-hidden="true"><span><i class="k1"></i>Qwen3.8-Flash-Next</span><span><i class="k2"></i>GPT-5.6 Luna</span><span><i class="k4"></i>closed</span><span><i class="k6"></i>open weights</span><span><i class="k5"></i>best score at that cost</span></div>
+    <div class="scroll"><svg class="prog pareto" viewBox="0 0 680 400" role="img" aria-label="Artificial Analysis Intelligence Index v4.3.2 against cost per index task at hosted API prices, open and closed models. The frontier runs from GPT-6 Luna at 3 cents to Claude Opus 5.5 at about 6 dollars. Qwen3.8-Flash-Next scores 40 at 37 cents, below the frontier; GPT-5.6 Luna scores 37 at 18 cents.">
+<line class="grid" x1="40" x2="656" y1="356.0" y2="356.0"/><text class="tick" x="34" y="360.0" text-anchor="end">30</text>
+<line class="grid" x1="40" x2="656" y1="300.7" y2="300.7"/><text class="tick" x="34" y="304.7" text-anchor="end">35</text>
+<line class="grid" x1="40" x2="656" y1="245.3" y2="245.3"/><text class="tick" x="34" y="249.3" text-anchor="end">40</text>
+<line class="grid" x1="40" x2="656" y1="190.0" y2="190.0"/><text class="tick" x="34" y="194.0" text-anchor="end">45</text>
+<line class="grid" x1="40" x2="656" y1="134.7" y2="134.7"/><text class="tick" x="34" y="138.7" text-anchor="end">50</text>
+<line class="grid" x1="40" x2="656" y1="79.3" y2="79.3"/><text class="tick" x="34" y="83.3" text-anchor="end">55</text>
+<line class="grid" x1="40" x2="656" y1="24.0" y2="24.0"/><text class="tick" x="34" y="28.0" text-anchor="end">60</text>
+<line class="grid" x1="80.2" x2="80.2" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="80.2" y="372" text-anchor="middle">$0.03</text>
+<line class="grid" x1="199.5" x2="199.5" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="199.5" y="372" text-anchor="middle">$0.10</text>
+<line class="grid" x1="308.4" x2="308.4" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="308.4" y="372" text-anchor="middle">$0.30</text>
+<line class="grid" x1="427.8" x2="427.8" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="427.8" y="372" text-anchor="middle">$1</text>
+<line class="grid" x1="536.7" x2="536.7" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="536.7" y="372" text-anchor="middle">$3</text>
+<line class="grid" x1="656.0" x2="656.0" y1="24" y2="356" style="opacity:.5"/><text class="tick" x="656.0" y="372" text-anchor="middle">$10</text>
+<text class="tick" x="348.0" y="392" text-anchor="middle">cost per index task at API prices (log scale)</text>
+<text class="tick" x="34" y="14" text-anchor="end">index</text>
+<path class="front" d="M80.2,333.9 H108.7 V311.7 H148.9 V267.5 H225.5 V178.9 H273.1 V156.8 H314.8 V134.7 H334.4 V123.6 H395.2 V112.5 H487.1 V90.4 H550.8 V68.3 H605.0 V46.1 H656.0"/>
+<circle class="pt closed" cx="605.0" cy="46.1" r="3.6"><title>Claude Opus 5.5 (max): 58 at $5.98 per task (closed)</title></circle>
+<circle class="pt closed" cx="550.8" cy="68.3" r="3.6"><title>Claude Opus 5.5 (xhigh): 56 at $3.46 per task (closed)</title></circle>
+<circle class="pt closed" cx="628.8" cy="68.3" r="3.6"><title>Claude Sonnet 5.5 (max): 56 at $7.60 per task (closed)</title></circle>
+<circle class="pt closed" cx="487.1" cy="90.4" r="3.6"><title>Claude Opus 5.5 (high): 54 at $1.82 per task (closed)</title></circle>
+<circle class="pt closed" cx="629.2" cy="101.5" r="3.6"><title>Claude Fable 5.1 (max): 53 at $7.63 per task (closed)</title></circle>
+<circle class="pt closed" cx="605.0" cy="101.5" r="3.6"><title>Claude Fable 5.1 (xhigh): 53 at $5.98 per task (closed)</title></circle>
+<circle class="pt closed" cx="544.9" cy="101.5" r="3.6"><title>GPT-6 Astra (max): 53 at $3.26 per task (closed)</title></circle>
+<circle class="pt closed" cx="510.8" cy="112.5" r="3.6"><title>GPT-6 Astra (xhigh): 52 at $2.31 per task (closed)</title></circle>
+<circle class="pt closed" cx="527.7" cy="112.5" r="3.6"><title>Claude Sonnet 5.5 (xhigh): 52 at $2.74 per task (closed)</title></circle>
+<circle class="pt closed" cx="395.2" cy="112.5" r="3.6"><title>GPT-6.1 Sol (max): 52 at $0.72 per task (closed)</title></circle>
+<circle class="pt closed" cx="456.8" cy="123.6" r="3.6"><title>Claude Opus 5.5 (medium): 51 at $1.34 per task (closed)</title></circle>
+<circle class="pt closed" cx="562.9" cy="123.6" r="3.6"><title>Claude Fable 5.1 (high): 51 at $3.91 per task (closed)</title></circle>
+<circle class="pt closed" cx="334.4" cy="123.6" r="3.6"><title>GPT-6.1 Sol (xhigh): 51 at $0.39 per task (closed)</title></circle>
+<circle class="pt closed" cx="482.1" cy="123.6" r="3.6"><title>GPT-6 Astra (high): 51 at $1.73 per task (closed)</title></circle>
+<circle class="pt closed" cx="314.8" cy="134.7" r="3.6"><title>GPT-6.1 Sol (high): 50 at $0.32 per task (closed)</title></circle>
+<circle class="pt closed" cx="470.6" cy="134.7" r="3.6"><title>GPT-6 Astra (medium): 50 at $1.54 per task (closed)</title></circle>
+<circle class="pt closed" cx="536.0" cy="145.7" r="3.6"><title>Claude Fable 5.1 (medium): 49 at $2.98 per task (closed)</title></circle>
+<circle class="pt closed" cx="474.4" cy="156.8" r="3.6"><title>Muse Spark 1.3 (max): 48 at $1.60 per task (closed)</title></circle>
+<circle class="pt closed" cx="273.1" cy="156.8" r="3.6"><title>GPT-6.1 Sol (medium): 48 at $0.21 per task (closed)</title></circle>
+<circle class="pt closed" cx="432.6" cy="156.8" r="3.6"><title>GPT-6 Sol (max): 48 at $1.05 per task (closed)</title></circle>
+<circle class="pt closed" cx="513.3" cy="167.9" r="3.6"><title>Claude Fable 5.1 (low): 47 at $2.37 per task (closed)</title></circle>
+<circle class="pt closed" cx="435.4" cy="167.9" r="3.6"><title>Claude Sonnet 5.5 (high): 47 at $1.08 per task (closed)</title></circle>
+<circle class="pt closed" cx="558.5" cy="178.9" r="3.6"><title>Grok 4.7 (xhigh): 46 at $3.74 per task (closed)</title></circle>
+<circle class="pt closed" cx="527.3" cy="178.9" r="3.6"><title>Grok 4.7 (high): 46 at $2.73 per task (closed)</title></circle>
+<circle class="pt open" cx="225.5" cy="178.9" r="3.6"><title>MiMo-V2.6-Pro: 46 at $0.13 per task (open weights)</title></circle>
+<circle class="pt closed" cx="408.1" cy="178.9" r="3.6"><title>GPT-6 Astra (low): 46 at $0.82 per task (closed)</title></circle>
+<circle class="pt closed" cx="595.1" cy="190.0" r="3.6"><title>Qwen3.8 Max (0902): 45 at $5.41 per task (closed)</title></circle>
+<circle class="pt closed" cx="459.0" cy="190.0" r="3.6"><title>Muse Spark 1.3 (xhigh): 45 at $1.37 per task (closed)</title></circle>
+<circle class="pt open" cx="497.0" cy="190.0" r="3.6"><title>GLM-5.3 (max): 45 at $2.01 per task (open weights)</title></circle>
+<circle class="pt closed" cx="362.9" cy="201.1" r="3.6"><title>GPT-6 Sol (xhigh): 44 at $0.52 per task (closed)</title></circle>
+<circle class="pt open" cx="496.5" cy="201.1" r="3.6"><title>Kimi K3 (max): 44 at $2.00 per task (open weights)</title></circle>
+<circle class="pt open" cx="395.2" cy="201.1" r="3.6"><title>Step 5 Preview: 44 at $0.72 per task (open weights)</title></circle>
+<circle class="pt closed" cx="331.9" cy="212.1" r="3.6"><title>GPT-6 Sol (high): 43 at $0.38 per task (closed)</title></circle>
+<circle class="pt closed" cx="368.5" cy="223.2" r="3.6"><title>Claude Opus 5.5 (low): 42 at $0.55 per task (closed)</title></circle>
+<circle class="pt closed" cx="225.5" cy="223.2" r="3.6"><title>GPT-6.1 Sol (low): 42 at $0.13 per task (closed)</title></circle>
+<circle class="pt closed" cx="461.1" cy="223.2" r="3.6"><title>GPT-5.6 Terra (max): 42 at $1.40 per task (closed)</title></circle>
+<circle class="pt open" cx="290.4" cy="223.2" r="3.6"><title>GLM-5.3-Flash: 42 at $0.25 per task (open weights)</title></circle>
+<circle class="pt closed" cx="449.1" cy="234.3" r="3.6"><title>Gemini 3.8 Flash (high): 41 at $1.24 per task (closed)</title></circle>
+<circle class="pt closed" cx="375.5" cy="234.3" r="3.6"><title>Claude Sonnet 5.5 (medium): 41 at $0.59 per task (closed)</title></circle>
+<circle class="pt open" cx="504.1" cy="245.3" r="3.6"><title>Qwen3.8 2.4T A95B: 40 at $2.16 per task (open weights)</title></circle>
+<circle class="pt closed" cx="420.6" cy="245.3" r="3.6"><title>Gemini 3.8 Flash (medium): 40 at $0.93 per task (closed)</title></circle>
+<circle class="pt open" cx="298.0" cy="256.4" r="3.6"><title>DeepSeek V4.1 Flash (max): 39 at $0.27 per task (open weights)</title></circle>
+<circle class="pt closed" cx="382.0" cy="267.5" r="3.6"><title>GPT-5.6 Terra (xhigh): 38 at $0.63 per task (closed)</title></circle>
+<circle class="pt open" cx="148.9" cy="267.5" r="3.6"><title>MiMo-V2.6-Flash: 38 at $0.06 per task (open weights)</title></circle>
+<circle class="pt closed" cx="164.2" cy="278.5" r="3.6"><title>GPT-6 Luna (max): 37 at $0.07 per task (closed)</title></circle>
+<circle class="pt open" cx="388.1" cy="289.6" r="3.6"><title>DeepSeek V4 Pro 0813 (max): 36 at $0.67 per task (open weights)</title></circle>
+<circle class="pt open" cx="411.7" cy="311.7" r="3.6"><title>GLM-5.3 (low): 34 at $0.85 per task (open weights)</title></circle>
+<circle class="pt closed" cx="320.8" cy="311.7" r="3.6"><title>GPT-5.6 Terra (high): 34 at $0.34 per task (closed)</title></circle>
+<circle class="pt closed" cx="225.5" cy="311.7" r="3.6"><title>GPT-6 Sol (low): 34 at $0.13 per task (closed)</title></circle>
+<circle class="pt closed" cx="108.7" cy="311.7" r="3.6"><title>GPT-6 Luna (xhigh): 34 at $0.04 per task (closed)</title></circle>
+<circle class="pt open" cx="428.8" cy="311.7" r="3.6"><title>Qwen3.8 27B (xhigh): 34 at $1.01 per task (open weights)</title></circle>
+<circle class="pt open" cx="277.7" cy="311.7" r="3.6"><title>DeepSeek V4 Flash 0731 (max): 34 at $0.22 per task (open weights)</title></circle>
+<circle class="pt closed" cx="80.2" cy="333.9" r="3.6"><title>GPT-6 Luna (high): 32 at $0.03 per task (closed)</title></circle>
+<text class="tick lab" x="597.0" y="50.1" text-anchor="end">Claude Opus 5.5 (max)</text>
+<text class="tick lab" x="326.4" y="113.6" text-anchor="end">GPT-6.1 Sol (xhigh)</text>
+<text class="tick lab" x="217.5" y="170.9" text-anchor="end">MiMo-V2.6-Pro</text>
+<text class="tick lab" x="80.2" y="324.9" text-anchor="middle">GPT-6 Luna (high)</text>
+<circle class="s2d" cx="257.8" cy="278.5" r="5.5"><title>GPT-5.6 Luna (max): 37 at $0.18 per task</title></circle><text class="dl" x="257.8" y="298.5" text-anchor="end">GPT-5.6 Luna (max) <tspan class="dlv">37</tspan></text>
+<circle class="s1d" cx="329.2" cy="245.3" r="6"><title>Qwen3.8-Flash-Next: 40 at $0.37 per task</title></circle><text class="dl" x="339.2" y="249.3"><tspan class="dlv">Qwen3.8-Flash-Next</tspan> 40</text>
+</svg></div>
+    <figcaption>Artificial Analysis Intelligence Index v4.3.2 against cost per index task at hosted API prices, as of 30 September 2026. Hover or tap a point for its value.</figcaption>
+  </figure>
+
+  <h2><span class="num">2</span>CPU inference on used hardware is a thing</h2>
+
+  <p>One formula explains most of it:</p>
+
+  <p class="formula" role="note">decode tok/s <span class="op">≈</span> memory bandwidth <span class="op">÷</span> bytes read per token</p>
+
+  <p>Everyone who runs models locally learns this eventually. It has a fun consequence, though. If you're generating one token at a time for one person, compute barely matters and memory channels do.</p>
+
+  <p>Off-the-shelf software doesn't use four memory systems at once, though. llama.cpp ran <em>slower</em> on two boxes than on one. The reason is NUMA:<sup class="fn" id="r1"><a href="#f1">1</a></sup> in my measurements, a socket reads its own memory more than twice as fast as its neighbour's. Anything that makes a socket fetch weights from the other socket pays that penalty on every token.</p>
+
+  <p>So my engine uses <strong>owned experts</strong>. A mixture-of-experts model has hundreds of small expert networks and uses only a few per token. In my engine each expert lives in exactly one socket's memory and never moves. When a token needs an expert, the token goes to the expert. Weights stay put; only activations travel, a few kilobytes per token.</p>
+
+  <p>For the link between the boxes, my upgrade research pointed at used Mellanox ConnectX-3 cards: cheap now, and fast. I'll admit I got a little giddy. This was my first InfiniBand, the datacenter interconnect Nvidia bought Mellanox for, because it's what ties large GPU pods together. Two cards and a half-metre cable: 56&nbsp;Gb/s, direct, no switch. The bandwidth barely mattered, because a few kilobytes per token don't need a big pipe. Latency did. With RDMA, one box writes straight into the other box's memory, with no kernel and no TCP involved, and the other box notices by watching a flag. That takes about 0.9&nbsp;microseconds. A ping over the same cable through the normal network stack takes about 190.<sup class="fn" id="r2"><a href="#f2">2</a></sup> I bought a fat pipe and got a short one, which was what I needed.</p>
+
+  <figure class="photo pair"><div class="row"><div style="flex:1.333"><img src="/blog/images/own-your-intelligence/ib-cable.jpg" width="1000" height="750" alt="A short InfiniBand cable held in a hand" loading="lazy"></div><div style="flex:0.750"><img src="/blog/images/own-your-intelligence/rear.jpg" width="750" height="1000" alt="Rear of the two servers in blue light, with InfiniBand and Ethernet cables" loading="lazy"></div></div><figcaption>Left: the half-metre cable. Right: the back of the box, with the InfiniBand link and the direct Ethernet cables.</figcaption></figure>
+
+  <p>The shopping list follows from the formula:</p>
+  <ul>
+    <li>Memory channels come first. Swapping the Xeon E5-2640&nbsp;v4s for used E5-2695&nbsp;v4s lets the same DIMMs run at 2400 instead of 2133.</li>
+    <li>Interconnect latency comes next. See above; I'm still pleased about it.</li>
+    <li>Then the fewest active parameters for the quality you need. This one was less a purchase than a lucky fit. If the only models near the top of the index were dense, or read far more parameters per token, I wouldn't have tried any of this, on the Spark or on the R530s. Flash-Next reads about 6B parameters per token for its 40. DeepSeek V4 Flash, which I ran every day on the Spark at 2-bit, reads 13B for a 34. Qwen3.8 27B, dense on my dual-4090 workstation, reads all 27B for a 34. GLM-5.3-Flash scores higher, 42, but reads 18B, three times as much.</li>
+  </ul>
+
+  <figure class="photo narrow"><img src="/blog/images/own-your-intelligence/old-cpu.jpg" width="1000" height="750" alt="An Intel Xeon E5-2640 v4 on bubble wrap" loading="lazy"><figcaption>One of the old E5-2640&nbsp;v4s, on its way into storage.</figcaption></figure>
+
+  <p>All in, the upgrades came to under €500. Ten-year-old datacenter gear gets dumped by the pallet, and patience pays: two of the three used SSDs I bought had about 30 days of power-on time.</p>
+
+  <div class="table-wrap">
+    <table>
+      <caption>Measured</caption>
+      <tbody>
+        <tr><td>Decode, one stream, short prompt</td><td class="v">33 tok/s</td></tr>
+        <tr><td>Decode, one stream, 2.6k-token context</td><td class="v">29 tok/s</td></tr>
+        <tr><td>Four streams at once</td><td class="v">36 tok/s combined<small>each stream bit-identical to running alone</small></td></tr>
+        <tr><td>Prefill, 2.6k-token prompt</td><td class="v">58 tok/s</td></tr>
+        <tr><td>Stock llama.cpp, same model</td><td class="v">5.3 tok/s</td></tr>
+        <tr><td>Context</td><td class="v">262k tokens<small>prompt cache on NVMe</small></td></tr>
+        <tr><td>Power per box: idle / single-stream decode / heavy load</td><td class="v">84 / 170–180 / 266 W<small>decode tuned for quiet, not speed</small></td></tr>
+        <tr><td>Electricity per million generated tokens</td><td class="v">≈ €1.20–1.60<small>at about 40 ct/kWh</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">The llama.cpp line compares whole systems. It ran on one box without speculative decoding, while my engine uses both boxes and the model's own multi-token-prediction head. It had 36 threads, one per physical core. On the smaller development model I had swept NUMA modes and thread counts properly: nothing beat about 12 tok/s on one box, and two boxes over RPC dropped to 8.</p>
+
+  <p>Four streams barely beat one, and the formula says why: each stream calls on different experts, so four streams read almost four times the weights. It doesn't scale well, but 288&nbsp;GB leaves room for the concurrency, and that's what subagents and parallel work need.</p>
+
+  <p>Prefill is the weak spot, as on any CPU. At 58 tok/s, a coding agent's 19k-token system prompt takes five to six minutes cold. The prompt cache on NVMe is what makes that livable: after a restart, a returning 15.5k-token conversation was back in 24 seconds instead of four to five minutes cold.</p>
+
+  <p>The electricity line is rough on purpose: both boxes at about 175&nbsp;W each, German household prices averaging around 40&nbsp;ct/kWh over the last three years, and output tokens only. That's more than a datacenter charges for the same model (about $0.47 per million output tokens for hosted Flash-Next), about what Luna costs, and far below frontier prices. The point was never saving money. It was running privately at a reasonable cost, and it does that.</p>
+
+  <h2><span class="num">3</span>Autoresearch did the work</h2>
+
+  <p>Karpathy's <a href="https://github.com/karpathy/autoresearch">autoresearch</a> puts a coding agent in a loop steered by one <code>program.md</code>: change something, measure, keep or discard, repeat. He built it for training runs. I pointed the same pattern at a systems problem.</p>
+
+  <p>My <code>program.md</code> sets three rules:</p>
+  <ul>
+    <li>Pre-register every experiment with a prediction.</li>
+    <li>Prove correctness before speed, bit-exact against a reference.</li>
+    <li>Keep a change only if it beats the measured noise floor in paired A/B runs.</li>
+  </ul>
+
+  <details class="aside primer">
+    <summary><span class="label">Autoresearch, generalised</span><span class="hint">A primer for running the loop on your own problem.</span></summary>
+    <div class="body">
+    <p>Karpathy's data engine at Tesla was a flywheel: the fleet surfaces failures, they get labelled, the net retrains, the fleet redeploys. It still needed people to label. In autoresearch the labeller is a benchmark, so the flywheel can run unattended all night. What keeps it turning:</p>
+
+    <figure class="loop">
+      <svg viewBox="0 0 480 186" role="img" aria-label="The loop: predict, change, verify, measure, keep or drop. Verify and measure form the evaluator, which the agent cannot edit. Every outcome, including failures, goes to the journal, where the next iteration or a fresh session starts.">
+        <defs>
+          <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L8,4 L0,8 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="192" y="26" width="192" height="80" rx="8" stroke-dasharray="4 4" style="stroke:var(--accent)"/>
+          <rect x="8" y="44" width="80" height="44" rx="5"/>
+          <rect x="104" y="44" width="80" height="44" rx="5"/>
+          <rect x="200" y="44" width="80" height="44" rx="5"/>
+          <rect x="296" y="44" width="80" height="44" rx="5"/>
+          <rect x="392" y="44" width="80" height="44" rx="5"/>
+          <line x1="88" y1="66" x2="103" y2="66" marker-end="url(#ar)"/>
+          <line x1="184" y1="66" x2="199" y2="66" marker-end="url(#ar)"/>
+          <line x1="280" y1="66" x2="295" y2="66" marker-end="url(#ar)"/>
+          <line x1="376" y1="66" x2="391" y2="66" marker-end="url(#ar)"/>
+          <polyline points="432,88 432,146 48,146 48,89" marker-end="url(#ar)"/>
+          <line x1="240" y1="106" x2="240" y2="145"/>
+        </g>
+        <g fill="currentColor" font-family="JetBrains Mono, Menlo, monospace" text-anchor="middle">
+          <text x="288" y="18" font-size="11" style="fill:var(--accent)">evaluator · agent can't edit</text>
+          <text x="48" y="64" font-size="13">predict</text>
+          <text x="144" y="64" font-size="13">change</text>
+          <text x="240" y="64" font-size="13">verify</text>
+          <text x="336" y="64" font-size="13">measure</text>
+          <text x="432" y="64" font-size="13">keep/drop</text>
+          <text x="48" y="80" font-size="10" opacity="0.7">expected Δ</text>
+          <text x="144" y="80" font-size="10" opacity="0.7">code</text>
+          <text x="240" y="80" font-size="10" opacity="0.7">bit-exact</text>
+          <text x="336" y="80" font-size="10" opacity="0.7">paired A/B</text>
+          <text x="432" y="80" font-size="10" opacity="0.7">vs noise</text>
+          <text x="248" y="128" font-size="10" text-anchor="start" opacity="0.7">fail</text>
+          <text x="240" y="168" font-size="11">journal + git: every outcome, including fails</text>
+          <text x="240" y="182" font-size="10" opacity="0.7">the next session starts here</text>
+        </g>
+      </svg>
+    </figure>
+
+    <ol class="primer-list">
+      <li><strong>The evaluator is the product.</strong> The agent optimises exactly what you measure, bugs and noise included. Make it fast, know its noise floor, and keep it out of the agent's reach. Spend your first day here, before touching the prompt.</li>
+      <li><strong>Keep memory in files.</strong> An append-only journal, fails included, plus one commit per kept change. Every session is disposable, and dead ends stay dead.</li>
+      <li><strong>Never let it finish.</strong> A target is a stop condition. Make the goal relative, such as beating the best so far, and the loop keeps spinning while you sleep.</li>
+    </ol>
+    <p class="kit">For the mechanics, go to Karpathy: the <a href="https://github.com/karpathy/autoresearch">README</a> and his <a href="https://github.com/karpathy/autoresearch/blob/master/program.md"><code>program.md</code></a>.</p>
+    </div>
+  </details>
+
+  <p>I didn't start on the 180B. The first practical tests, and most of the engine, ran against Qwen3-Next-80B, the smallest model with the same structure; the move to the target came once the engine worked. The agents (Codex first, then Claude Code) wrote the C++ kernels, ran the A/Bs on both servers over ssh, and kept the journal. I set the goals, made the calls, and said no a lot. All of it ran on two consumer subscriptions.</p>
+
+  <p>Nine days: <span class="stat">nearly 300</span> experiments, <span class="stat">600+</span> journal entries, about <span class="stat">1,300</span> commits, and, on the target model, <span class="stat">1.45 → 33</span> tok/s, from the engine's first run on it to today. Three changes did most of it:</p>
+  <ol>
+    <li><strong>Worker teams per socket.</strong> 7.7x in a single step, still on the 80B.</li>
+    <li><strong>Speculative decoding plus an RDMA mailbox.</strong> Two boxes finally beat one: 13 → 20 tok/s.</li>
+    <li><strong>The grind.</strong> Dozens of 1–5% wins took it from 25 to 33.</li>
+  </ol>
+
+  <p>A word about targets. I started at 20 tok/s, then it was 25, then 30, then 35. None of these numbers mean anything. I kept moving the target because an agent that reaches its goal does the reasonable thing: it stops, writes a nice summary, and waits for me. When it's on a roll, you don't want that.</p>
+
+  <figure class="chart" id="progress">
+    <div class="chart-legend" aria-hidden="true"><span><i class="k1"></i>best so far, short prompt</span><span><i class="k2"></i>decode at 2.6k context</span><span><i class="k3"></i>experiments not kept</span></div>
+    <div class="scroll"><svg class="prog" viewBox="0 0 680 360" role="img" aria-label="Decode speed per experiment: the best single-stream result climbs from 1.45 to 33.5 tokens per second, against stock llama.cpp at 5.3 and a current target of 35. Decode at 2.6k tokens of context rises to 29.9.">
+<line class="grid" x1="38" x2="562" y1="320.0" y2="320.0"/><text class="tick" x="32" y="324.0" text-anchor="end">0</text>
+<line class="grid" x1="38" x2="562" y1="245.5" y2="245.5"/><text class="tick" x="32" y="249.5" text-anchor="end">10</text>
+<line class="grid" x1="38" x2="562" y1="171.0" y2="171.0"/><text class="tick" x="32" y="175.0" text-anchor="end">20</text>
+<line class="grid" x1="38" x2="562" y1="96.5" y2="96.5"/><text class="tick" x="32" y="100.5" text-anchor="end">30</text>
+<line class="grid" x1="38" x2="562" y1="22.0" y2="22.0"/><text class="tick" x="32" y="26.0" text-anchor="end">40</text>
+<text class="tick" x="77.5" y="336" text-anchor="middle">180</text>
+<text class="tick" x="176.4" y="336" text-anchor="middle">200</text>
+<text class="tick" x="275.3" y="336" text-anchor="middle">220</text>
+<text class="tick" x="374.2" y="336" text-anchor="middle">240</text>
+<text class="tick" x="473.0" y="336" text-anchor="middle">260</text>
+<text class="tick" x="300.0" y="354" text-anchor="middle">experiment # (1–173 ran on the 80B)</text>
+<text class="tick" x="32" y="14" text-anchor="end">tok/s</text>
+<line class="ref goal" x1="38" x2="562" y1="59.2" y2="59.2"/><text class="reflab" x="42" y="53.2">target 35 (earlier 20, 25, 30)</text>
+<line class="ref" x1="38" x2="562" y1="280.5" y2="280.5"/><text class="reflab" x="558" y="274.5" text-anchor="end">stock llama.cpp, one box: 5.3</text>
+<circle class="hist" cx="52.8" cy="300.9" r="3"><title>E175: 2.6 tok/s (not kept)</title></circle>
+<circle class="hist" cx="102.3" cy="280.1" r="3"><title>E185: 5.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="112.2" cy="271.5" r="3"><title>E187: 6.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="122.0" cy="256.7" r="3"><title>E189: 8.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="127.0" cy="268.7" r="3"><title>E190: 6.9 tok/s (not kept)</title></circle>
+<circle class="hist" cx="131.9" cy="245.6" r="3"><title>E191: 10.0 tok/s (not kept)</title></circle>
+<circle class="hist" cx="136.9" cy="237.1" r="3"><title>E192: 11.1 tok/s (not kept)</title></circle>
+<circle class="hist" cx="141.8" cy="236.2" r="3"><title>E193: 11.2 tok/s (not kept)</title></circle>
+<circle class="hist" cx="151.7" cy="229.2" r="3"><title>E195: 12.2 tok/s (not kept)</title></circle>
+<circle class="hist" cx="161.6" cy="262.3" r="3"><title>E197: 7.8 tok/s (not kept)</title></circle>
+<circle class="hist" cx="181.4" cy="220.8" r="3"><title>E201: 13.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="186.3" cy="210.9" r="3"><title>E202: 14.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="191.2" cy="230.6" r="3"><title>E203: 12.0 tok/s (not kept)</title></circle>
+<circle class="hist" cx="201.1" cy="201.8" r="3"><title>E205: 15.9 tok/s (not kept)</title></circle>
+<circle class="hist" cx="225.8" cy="131.3" r="3"><title>E210: 25.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="240.7" cy="130.0" r="3"><title>E213: 25.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="250.6" cy="137.7" r="3"><title>E215: 24.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="255.5" cy="129.3" r="3"><title>E216: 25.6 tok/s (not kept)</title></circle>
+<circle class="hist" cx="265.4" cy="148.1" r="3"><title>E218: 23.1 tok/s (not kept)</title></circle>
+<circle class="hist" cx="270.3" cy="128.8" r="3"><title>E219: 25.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="275.3" cy="242.8" r="3"><title>E220: 10.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="280.2" cy="91.4" r="3"><title>E221: 30.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="295.1" cy="131.1" r="3"><title>E224: 25.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="300.0" cy="129.5" r="3"><title>E225: 25.6 tok/s (not kept)</title></circle>
+<circle class="hist" cx="304.9" cy="130.2" r="3"><title>E226: 25.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="309.9" cy="153.1" r="3"><title>E227: 22.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="319.8" cy="134.5" r="3"><title>E229: 24.9 tok/s (not kept)</title></circle>
+<circle class="hist" cx="334.6" cy="130.0" r="3"><title>E232: 25.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="349.4" cy="115.9" r="3"><title>E235: 27.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="354.4" cy="141.3" r="3"><title>E236: 24.0 tok/s (not kept)</title></circle>
+<circle class="hist" cx="364.3" cy="113.9" r="3"><title>E238: 27.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="369.2" cy="116.8" r="3"><title>E239: 27.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="379.1" cy="136.9" r="3"><title>E241: 24.6 tok/s (not kept)</title></circle>
+<circle class="hist" cx="389.0" cy="113.5" r="3"><title>E243: 27.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="408.8" cy="115.0" r="3"><title>E247: 27.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="418.6" cy="113.1" r="3"><title>E249: 27.8 tok/s (not kept)</title></circle>
+<circle class="hist" cx="433.5" cy="114.8" r="3"><title>E252: 27.5 tok/s (not kept)</title></circle>
+<circle class="hist" cx="443.4" cy="116.2" r="3"><title>E254: 27.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="458.2" cy="129.7" r="3"><title>E257: 25.6 tok/s (not kept)</title></circle>
+<circle class="hist" cx="473.0" cy="109.2" r="3"><title>E260: 28.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="478.0" cy="100.7" r="3"><title>E261: 29.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="478.0" cy="99.0" r="3"><title>E261: 29.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="482.9" cy="146.7" r="3"><title>E262: 23.3 tok/s (not kept)</title></circle>
+<circle class="hist" cx="487.8" cy="103.1" r="3"><title>E263: 29.1 tok/s (not kept)</title></circle>
+<circle class="hist" cx="497.7" cy="95.4" r="3"><title>E265: 30.1 tok/s (not kept)</title></circle>
+<circle class="hist" cx="512.6" cy="82.9" r="3"><title>E268: 31.8 tok/s (not kept)</title></circle>
+<circle class="hist" cx="537.3" cy="93.1" r="3"><title>E273: 30.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="542.2" cy="85.8" r="3"><title>E274: 31.4 tok/s (not kept)</title></circle>
+<circle class="hist" cx="547.2" cy="83.8" r="3"><title>E275: 31.7 tok/s (not kept)</title></circle>
+<circle class="hist" cx="552.1" cy="89.7" r="3"><title>E276: 30.9 tok/s (not kept)</title></circle>
+<polyline class="s2" points="275.3,265.2 304.9,217.9 309.9,179.4 329.7,154.5 344.5,147.5 433.5,134.9 478.0,131.3 478.0,128.3 492.8,119.7 522.5,97.3"/>
+<circle class="s2d" cx="275.3" cy="265.2" r="3.5"><title>E220: 7.3 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="304.9" cy="217.9" r="3.5"><title>E226: 13.7 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="309.9" cy="179.4" r="3.5"><title>E227: 18.9 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="329.7" cy="154.5" r="3.5"><title>E231: 22.2 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="344.5" cy="147.5" r="3.5"><title>E234: 23.1 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="433.5" cy="134.9" r="3.5"><title>E252: 24.8 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="478.0" cy="131.3" r="3.5"><title>E261: 25.3 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="478.0" cy="128.3" r="3.5"><title>E261: 25.7 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="492.8" cy="119.7" r="3.5"><title>E264: 26.9 tok/s at 2.6k context</title></circle>
+<circle class="s2d" cx="522.5" cy="97.3" r="3.5"><title>E270: 29.9 tok/s at 2.6k context</title></circle>
+<text class="dl" x="530.5" y="101.3"><tspan class="dlv">29.9</tspan> at 2.6k</text>
+<path class="s1" d="M47.9,309.2 H67.7 V299.9 H72.6 V291.8 H77.5 V286.0 H92.4 V283.1 H97.3 V263.4 H107.2 V253.0 H117.1 V237.1 H146.8 V228.6 H156.6 V220.8 H176.4 V201.9 H196.2 V192.6 H206.1 V167.6 H211.0 V148.3 H216.0 V141.0 H220.9 V135.3 H230.8 V127.0 H235.7 V126.7 H245.6 V114.7 H339.5 V114.6 H344.5 V113.4 H413.7 V113.1 H423.6 V111.3 H433.5 V101.9 H478.0 V93.7 H492.8 V72.1 H527.4 V70.6 H557.1"/>
+<circle class="s1d" cx="47.9" cy="309.2" r="4"><title>E174: 1.45 tok/s, new best</title></circle>
+<circle class="s1d" cx="67.7" cy="299.9" r="4"><title>E178: 2.70 tok/s, new best</title></circle>
+<circle class="s1d" cx="72.6" cy="291.8" r="4"><title>E179: 3.78 tok/s, new best</title></circle>
+<circle class="s1d" cx="77.5" cy="286.0" r="4"><title>E180: 4.57 tok/s, new best</title></circle>
+<circle class="s1d" cx="92.4" cy="283.1" r="4"><title>E183: 4.95 tok/s, new best</title></circle>
+<circle class="s1d" cx="97.3" cy="263.4" r="4"><title>E184: 7.60 tok/s, new best</title></circle>
+<circle class="s1d" cx="107.2" cy="253.0" r="4"><title>E186: 9.00 tok/s, new best</title></circle>
+<circle class="s1d" cx="117.1" cy="237.1" r="4"><title>E188: 11.13 tok/s, new best</title></circle>
+<circle class="s1d" cx="146.8" cy="228.6" r="4"><title>E194: 12.27 tok/s, new best</title></circle>
+<circle class="s1d" cx="156.6" cy="220.8" r="4"><title>E196: 13.32 tok/s, new best</title></circle>
+<circle class="s1d" cx="176.4" cy="201.9" r="4"><title>E200: 15.85 tok/s, new best</title></circle>
+<circle class="s1d" cx="196.2" cy="192.6" r="4"><title>E204: 17.10 tok/s, new best</title></circle>
+<circle class="s1d" cx="206.1" cy="167.6" r="4"><title>E206: 20.45 tok/s, new best</title></circle>
+<circle class="s1d" cx="211.0" cy="148.3" r="4"><title>E207: 23.05 tok/s, new best</title></circle>
+<circle class="s1d" cx="216.0" cy="141.0" r="4"><title>E208: 24.03 tok/s, new best</title></circle>
+<circle class="s1d" cx="220.9" cy="135.3" r="4"><title>E209: 24.79 tok/s, new best</title></circle>
+<circle class="s1d" cx="230.8" cy="127.0" r="4"><title>E211: 25.90 tok/s, new best</title></circle>
+<circle class="s1d" cx="235.7" cy="126.7" r="4"><title>E212: 25.95 tok/s, new best</title></circle>
+<circle class="s1d" cx="245.6" cy="114.7" r="4"><title>E214: 27.56 tok/s, new best</title></circle>
+<circle class="s1d" cx="339.5" cy="114.6" r="4"><title>E233: 27.57 tok/s, new best</title></circle>
+<circle class="s1d" cx="344.5" cy="113.4" r="4"><title>E234: 27.73 tok/s, new best</title></circle>
+<circle class="s1d" cx="413.7" cy="113.1" r="4"><title>E248: 27.77 tok/s, new best</title></circle>
+<circle class="s1d" cx="423.6" cy="111.3" r="4"><title>E250: 28.02 tok/s, new best</title></circle>
+<circle class="s1d" cx="433.5" cy="101.9" r="4"><title>E252: 29.28 tok/s, new best</title></circle>
+<circle class="s1d" cx="478.0" cy="93.7" r="4"><title>E261: 30.37 tok/s, new best</title></circle>
+<circle class="s1d" cx="492.8" cy="72.1" r="4"><title>E264: 33.28 tok/s, new best</title></circle>
+<circle class="s1d" cx="527.4" cy="70.6" r="4"><title>E271: 33.48 tok/s, new best</title></circle>
+<text class="dl" x="565.1" y="74.6"><tspan class="dlv">33.5</tspan> best</text>
+</svg></div>
+    <figcaption>Single-stream decode on Qwen3.8-Flash-Next, per experiment, as of 30 September. The numbering continues from the 80B development model. Every point was measured; grey ones didn't beat the best and were thrown away. Hover or tap a point for its value.</figcaption>
+  </figure>
+
+  <p>The same loop made the servers livable. They sit in the room I work in, and at my desk they peaked at over 60&nbsp;dB(A). The fan controller brought normal use down to 42. The finished acoustic box took it to 39, and 31–32 at idle. The loop helped with all of it:</p>
+
+  <figure class="photo pair"><div class="row"><div style="flex:0.779"><img src="/blog/images/own-your-intelligence/noise-before.jpg" width="779" height="1000" alt="A phone sound meter reading 56.5 dB(A)" loading="lazy"></div><div style="flex:1.821"><img src="/blog/images/own-your-intelligence/noise-now.jpg" width="1000" height="549" alt="A sound meter display reading 39.1" loading="lazy"></div></div><figcaption>Left: an early reading at my desk, 56.5&nbsp;dB(A) and peaking at 61. Right: 39.1 today, in normal use, in the box.</figcaption></figure>
+  <ul>
+    <li><strong>Fans.</strong> iDRAC, Dell's management controller, did not recognise the new InfiniBand and NVMe adapter cards and assumed the worst: 8,000–11,000&nbsp;rpm at idle. The agents measured it with a calibrated microphone, fitted a simulator to those measurements, and optimized a fan policy in it.</li>
+    <li><strong>The acoustic box.</strong> We went back and forth on designs until a much simpler one won. I bought the parts, drew the final version in Shapr3D on my iPad, and handed the export back to the agents to check it and plan the build steps. Then I built it.</li>
+    <li><strong>Everything around it.</strong> A hardware inventory, a porting guide for DeepSeek V4.1 Flash and GLM-5.3-Flash, and a review of this post.</li>
+  </ul>
+
+  <figure class="photo pair"><div class="row"><div style="flex:1.344"><img src="/blog/images/own-your-intelligence/proto-tape.jpg" width="1000" height="744" alt="Three large fans taped to the front of a server" loading="lazy"></div><div style="flex:1.562"><img src="/blog/images/own-your-intelligence/proto-cardboard.jpg" width="1000" height="640" alt="Two fans mounted in a cardboard box on a server" loading="lazy"></div></div><figcaption>Two of the designs we went through before the box: tape and Noctuas, then cardboard.</figcaption></figure>
+
+  <figure class="boxfig">
+    <div class="scroll"><svg class="section" viewBox="0 0 702 331" role="img" aria-label="Side section of the acoustic box: air enters through fans under the front, rises into a front plenum, crosses both servers front to back, rises into a rear plenum and leaves through fans on top at the rear.">
+<defs><marker id="af" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--s1)"/></marker></defs>
+<rect class="stand" x="162.2" y="267.2" width="24.5" height="24.5"/>
+<rect class="stand" x="606.7" y="267.2" width="24.5" height="24.5"/>
+<rect class="wood" x="60.0" y="57.2" width="11.2" height="210.0"/>
+<rect class="wood" x="631.2" y="57.2" width="11.2" height="210.0"/>
+<rect class="wood" x="106.2" y="231.5" width="525.0" height="11.2"/>
+<rect class="wood" x="71.2" y="81.7" width="469.0" height="11.2"/>
+<rect class="wood" x="156.6" y="242.7" width="24.5" height="24.5"/>
+<rect class="wood" x="522.7" y="57.2" width="24.5" height="24.5"/>
+<rect class="fanplate" x="71.2" y="267.2" width="91.0" height="11.2"/>
+<rect class="fanplate" x="540.2" y="46.0" width="91.0" height="11.2"/>
+<rect class="srv" x="113.2" y="162.9" width="455.0" height="63.0"/>
+<rect class="srv" x="113.2" y="96.4" width="455.0" height="63.0"/>
+<text class="lbl srvl" x="340.7" y="198.4" text-anchor="middle">R530</text>
+<text class="lbl srvl" x="340.7" y="131.9" text-anchor="middle">R530</text>
+<polyline class="air" points="116.7,309.2 116.7,256.7 88.7,256.7 88.7,200.7" marker-end="url(#af)"/>
+<polyline class="air" points="88.7,200.7 88.7,194.4 134.2,194.4 281.2,194.4" marker-end="url(#af)"/>
+<polyline class="air" points="88.7,141.2 88.7,127.9 134.2,127.9 281.2,127.9" marker-end="url(#af)"/>
+<polyline class="air" points="393.2,194.4 589.2,194.4 603.2,194.4 603.2,113.2" marker-end="url(#af)"/>
+<polyline class="air" points="393.2,127.9 589.2,127.9 603.2,127.9 603.2,85.2" marker-end="url(#af)"/>
+<polyline class="air" points="603.2,92.2 603.2,64.2 585.7,64.2 585.7,15.2" marker-end="url(#af)"/>
+<polyline class="air noarrow" points="88.7,200.7 88.7,144.7" marker-end="url(#af)"/>
+<text class="lbl strong" x="116.7" y="323.2" text-anchor="middle">air in</text>
+<text class="lbl strong" x="585.7" y="9.2" text-anchor="middle">air out</text>
+<text class="lbl" x="191.6" y="290.4">intake fans</text>
+<text class="lbl" x="534.2" y="40.0" text-anchor="end">exhaust fans</text>
+<text class="lbl" x="54.0" y="162.2" text-anchor="end">front</text>
+<text class="lbl" x="648.4" y="162.2">rear</text>
+<line class="dim" x1="60.0" x2="642.4" y1="313.7" y2="313.7"/><text class="lbl" x="351.2" y="326.7" text-anchor="middle">800 mm deep, 532 wide, 300 high</text>
+</svg></div>
+    <div class="steps"><div><img src="/blog/images/own-your-intelligence/manual-01.jpg" alt="Build manual: floor and rails" loading="lazy"><span>floor and rails</span></div><div><img src="/blog/images/own-your-intelligence/manual-05.jpg" alt="Build manual: first wall" loading="lazy"><span>first wall</span></div><div><img src="/blog/images/own-your-intelligence/manual-10.jpg" alt="Build manual: fan plates" loading="lazy"><span>fan plates</span></div><div><img src="/blog/images/own-your-intelligence/manual-12.jpg" alt="Build manual: servers in" loading="lazy"><span>servers in</span></div></div>
+    <figcaption>The design that won, in section. Air comes in under the front, rises, crosses both servers front to back, rises again and leaves on top at the rear. Below: four steps from my build manual, rendered from the model.</figcaption>
+  </figure>
+
+  <h2>What almost stopped me</h2>
+  <ul>
+    <li>The first numbers: llama.cpp across two nodes, RDMA included, was not encouraging.</li>
+    <li>A server that wouldn't boot after the CPU swap. It reported a DIMM error, and reseating didn't help. The cause was a speck of thermal paste on one CPU socket pin. One swipe fixed it for good.</li>
+    <li>The noise: at 60+ dB(A), I seriously doubted this could ever run always-on.</li>
+    <li>Wear: one DIMM now logs a corrected error at the same address every day. Running ten-year-old parts warmer to keep them quiet has a cost, and I don't know it yet.</li>
+    <li>The GPU temptation: halfway through, I priced out a spare RTX 3060 12&nbsp;GB with 64&nbsp;GB of DDR5, and a build around my dual-4090 workstation.</li>
+    <li>Woodworking: I'm not much of a woodworker. The box was an adventure, and it's finished.</li>
+  </ul>
+  <figure class="photo pair"><div class="row"><div style="flex:0.750"><img src="/blog/images/own-your-intelligence/cpu-socket.jpg" width="750" height="1000" alt="An open CPU socket with old thermal paste" loading="lazy"></div><div style="flex:1.333"><img src="/blog/images/own-your-intelligence/woodwork.jpg" width="1000" height="750" alt="Inside of an unfinished wooden box" loading="lazy"></div></div><figcaption>Left: mid CPU swap. Right: the box, mid build.</figcaption></figure>
+  <p>None of these ended it. Most of them became the next experiment.</p>
+
+  <figure class="photo pair"><div class="row"><div style="flex:0.750"><img src="/blog/images/own-your-intelligence/rack-kiosk.jpg" width="1200" height="1600" alt="A rack with the wooden server box and an iPad showing live server telemetry" loading="lazy"></div><div style="flex:1.581"><img src="/blog/images/own-your-intelligence/kiosk-closeup.jpg" width="340" height="215" alt="Close-up of the iPad showing power, fan speed and temperatures for both servers" loading="lazy"></div></div><figcaption>Its home now: the rack in my office. The display on the front shows both servers live: power, fans, temperatures.</figcaption></figure>
+
+  <h2>Try this</h2>
+  <p>Measure your box's memory bandwidth and divide it by the bytes your model reads per token. You won't reach that number. But it tells you in five minutes whether the hardware you already own is worth a week of your time.</p>
+  <p>Next for mine: I'm pointing the box at itself. The same loop will build and test a new custom inference engine for a new model, and this time the agents doing the research run on the box. No APIs.</p>
+
+  <p class="closing">Own your intelligence. Then let it build the next one.</p>
+
+  <section class="footnotes" aria-label="Footnotes">
+    <ol>
+      <li id="f1">NUMA stands for non-uniform memory access. It means the memory attached to the other CPU is further away, and you pay for the trip.<a class="back" href="#r1" aria-label="Back to text">↩</a></li>
+      <li id="f2">Strictly, the ping is a round trip and the RDMA write goes one way, so the fair ratio is closer to 100x than 200x. I'm still impressed.<a class="back" href="#r2" aria-label="Back to text">↩</a></li>
+    </ol>
+  </section>
+<script>
+(function () {
+  document.querySelectorAll("figure.chart").forEach(function (fig) {
+    var svg = fig.querySelector("svg");
+    if (!svg) return;
+    var pts = [];
+    svg.querySelectorAll("circle").forEach(function (c) {
+      var t = c.querySelector("title");
+      if (!t) return;
+      c.setAttribute("data-tip", t.textContent);
+      t.remove();
+      pts.push(c);
+    });
+    if (!pts.length) return;
+    var tip = document.createElement("div");
+    tip.className = "chart-tip";
+    tip.setAttribute("role", "status");
+    fig.appendChild(tip);
+    var active = null;
+    function hide() {
+      tip.classList.remove("on");
+      if (active) active.classList.remove("hot");
+      active = null;
+    }
+    function show(e) {
+      var best = null, bd = 22 * 22;
+      pts.forEach(function (c) {
+        var r = c.getBoundingClientRect();
+        var dx = r.left + r.width / 2 - e.clientX, dy = r.top + r.height / 2 - e.clientY;
+        var d = dx * dx + dy * dy;
+        if (d < bd) { bd = d; best = c; }
+      });
+      if (!best) { hide(); return; }
+      if (active && active !== best) active.classList.remove("hot");
+      active = best;
+      best.classList.add("hot");
+      var r = best.getBoundingClientRect(), f = fig.getBoundingClientRect();
+      tip.textContent = best.getAttribute("data-tip");
+      var x = r.left + r.width / 2 - f.left;
+      x = Math.max(tip.offsetWidth / 2 + 4, Math.min(f.width - tip.offsetWidth / 2 - 4, x));
+      tip.style.left = x + "px";
+      tip.style.top = (r.top - f.top) + "px";
+      tip.classList.add("on");
+    }
+    svg.addEventListener("pointermove", show);
+    svg.addEventListener("pointerdown", show);
+    svg.addEventListener("pointerleave", hide);
+  });
+})();
+</script>
+</article>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Mostly tech &amp; data notes.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/jorahn" title="jorahn"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/rahnjonathan" title="rahnjonathan"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
