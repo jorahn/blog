@@ -101,7 +101,7 @@ plugins:
 paginate: 15
 paginate_path: /page:num/
 
-remote_theme: jekyll/minima
+remote_theme: jekyll/minima@7a326eb6df07ee6ee5305cfc1b28f7092037e67d # pinned to the Oct 2021 minima this blog was built with; later minima renamed the "default" layout
 
 titles_from_headings:
   enabled:     true
