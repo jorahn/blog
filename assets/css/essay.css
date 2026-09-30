@@ -377,3 +377,7 @@ body:has(.essay) .page-content .wrapper { max-width: none; padding: 0; }
 .essay .chart-tip.on { opacity: 1; }
 .essay svg.prog circle.hot { stroke: var(--ink); stroke-width: 2; opacity: 1; }
 .essay svg.prog { touch-action: pan-y; }
+
+/* minima sets table cell text to a fixed dark grey; follow the essay ink in both themes */
+.essay td { color: var(--ink); }
+.essay td:first-child { color: var(--muted); }
