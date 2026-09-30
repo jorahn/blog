@@ -1,24 +1,18 @@
 ---
-layout: page
+layout: null
 title: About Me
 permalink: /about/
+search_exclude: true
 ---
-
-![]({{ site.baseurl }}/images/logo.png "Me by VQGAN+CLIP")
-
-
-## See: [Intro to My Blog]({{ site.baseurl }}/about/2021/08/18/Intro.html)
-
-
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)**.
-
-
-#### Impressum:
-
-
-Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
-
-
-RCS Analytics GmbH  
-Bruno-Lauenroth-Weg 31  
-22417 Hamburg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About Jonathan Rahn</title>
+<meta http-equiv="refresh" content="0; url=https://jorahn.github.io/">
+<link rel="canonical" href="https://jorahn.github.io/">
+</head>
+<body>
+<p>This page moved to <a href="https://jorahn.github.io/">jorahn.github.io</a>.</p>
+</body>
+</html>
